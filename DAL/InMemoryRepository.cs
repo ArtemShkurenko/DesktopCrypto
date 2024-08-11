@@ -9,7 +9,6 @@ namespace Crypto.DAL
     public class InMemoryRepository
     {
         private List<Currency> _currencies;
-
         public InMemoryRepository()
         {
             LoadData();

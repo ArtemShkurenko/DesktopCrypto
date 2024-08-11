@@ -6,26 +6,31 @@
         xmlns:local="clr-namespace:DesktopCrypto"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-   
+
     <Window.DataContext>
         <local:ViewModel/>
     </Window.DataContext>
-   
+
     <Grid Margin="0">
-        <Frame x:Name="MainFrame" />
-        <Button Content="Save Data" Click="SaveDataButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10"/>
-        <ListView ItemsSource="{Binding Currencies}" Margin="10,50,10,-426">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="25*"/>
+        </Grid.ColumnDefinitions>
+        <Frame x:Name="MainFrame" Grid.ColumnSpan="2" />
+        <Button Content="View Details" Click="ViewDetailsButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
+        <Button Content="Save Data" Click="SaveDataButton_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10,10,10,0"/>
+        <ListView ItemsSource="{Binding Currencies}" Margin="10,50,10,-426" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="150"/>
                     <GridViewColumn Header="Symbol" DisplayMemberBinding="{Binding Symbol}" Width="100"/>
                     <GridViewColumn Header="Price" DisplayMemberBinding="{Binding CurrentPrice,StringFormat=N0}" Width="100"/>
                     <GridViewColumn Header="Market Cap" DisplayMemberBinding="{Binding MarketCap,StringFormat=N0}" Width="100"/>
-                    <GridViewColumn Header="Volume" DisplayMemberBinding="{Binding TotalVolume}" Width="100"/>
+                    <GridViewColumn Header="Volume" DisplayMemberBinding="{Binding TotalVolume,StringFormat=N0}" Width="100"/>
                     <GridViewColumn Header="Change" DisplayMemberBinding="{Binding PriceChange24h,StringFormat={}{0:0.00%}}" Width="100"/>
                 </GridView>
             </ListView.View>
         </ListView>
     </Grid>
-    
+
 </Window>

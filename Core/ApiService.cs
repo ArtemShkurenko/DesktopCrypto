@@ -34,8 +34,6 @@ namespace Crypto.Core
             }
             else
             {
-                Console.WriteLine($"Status Code: {response.StatusCode}");
-                Console.WriteLine($"Reason Phrase: {response.ReasonPhrase}");
                 string responseBody = await response.Content.ReadAsStringAsync();
             }
             return new List<Currency>();

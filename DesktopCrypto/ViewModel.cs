@@ -24,14 +24,12 @@ namespace DesktopCrypto
                 OnPropertyChanged(nameof(Currencies));
             }
         }
-
         public ViewModel()
         {
             _apiService = new ApiService();
             _repository = new InMemoryRepository();
             LoadDataAsync();
         }
-
         private async void LoadDataAsync()
         {
             var currencies = await _apiService.GetTopCurrenciesAsync();
@@ -44,7 +42,6 @@ namespace DesktopCrypto
             MessageBox.Show("Data saved successfully");
         }
         public event PropertyChangedEventHandler PropertyChanged;
-
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

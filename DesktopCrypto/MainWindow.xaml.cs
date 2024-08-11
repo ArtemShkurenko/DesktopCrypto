@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using DesktopCrypto.Views;
+using System.Windows;
 
 namespace DesktopCrypto
 {
@@ -8,15 +9,17 @@ namespace DesktopCrypto
         public MainWindow()
         {
             InitializeComponent();
-            // DataContext = new ViewModel();
             _viewModel = (ViewModel)DataContext;
-            //MainFrame.Navigate(new MainView());
-
         }
         private async void SaveDataButton_Click(object sender, RoutedEventArgs e)
         {
             await _viewModel.SaveDataAsync();
         }
-
+        private void ViewDetailsButton_Click(object sender, RoutedEventArgs e)
+        {
+            var currencies = _viewModel.Currencies;
+            DetailPage detailPage = new DetailPage(currencies);
+            detailPage.ShowDialog();
+        }
     }
 }
